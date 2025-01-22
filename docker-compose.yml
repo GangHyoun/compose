@@ -1,6 +1,7 @@
 # 도커 컴포즈 파일
 # 목표 1 : 로컬에서  명령어 1개로 web, react, sb, db 까지 한번에 세팅
 # 목표 2 : 위 구조 gitaction 적용 CI/CD 완성 + AWS(인스턴스 유형 상대적 고가)
+# mysql 강제 설치 : docker run -d -p 3306:3306 --name my_mysql --env MYSQL_USER=dev --env MYSQL_PASSWORD=1234 --env MYSQL_ROOT_PASSWORD=1234 mysql
 
 # 공통 파트 (볼륨, 네트워크)
 volumes:                  # 볼륨
@@ -21,6 +22,7 @@ services:
       - MYSQL_DATABASE=todo       # 초기 데이터베이스명
       - MYSQL_USER=guest          # 일반 사용자 아이디
       - MYSQL_PASSWORD=p1234      # 일반 사용자 비번
+    # mysql을 강제 설치하면서 디렉토리 위치가 달라진 것으로 추정됨
     # volumes:
     #   - mysql_data:/var/lib/mysql # 데이터베이스 컨테이너가 삭제되고 새로 생성, 데이터는 유지됨
     ports:

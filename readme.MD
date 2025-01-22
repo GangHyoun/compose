@@ -7,7 +7,7 @@ L frontend
     L 소스코드 (제공)
     L Dockerfile 구성
 L nginx
-    L default.conf (제공) : 프록시 관련 내용용
+    L default.conf (제공) : 프록시 관련 내용
 ```
 
 # docker-compose 구조
