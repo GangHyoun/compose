@@ -41,19 +41,19 @@ jobs:
             - name: 도커 허브 로그인
               run: echo "${{secrets.HUB_DOCKER_TOKEN}}" | docker login -u "${{secrets.HUB_DOCKER_NAME}}" --password-stdin
 
-            # 백엔드 이미지 생성 -> 허브(레퍼지토리) 푸시
+          # 백엔드 이미지 생성 -> 허브(레퍼지토리) 푸시
             - name: 백엔드 이미지 생성 -> 허브(레퍼지토리) 푸시
               run: |
                 docker build -t ganghyoun/demo_backend ./backend
-                docket push ganghyoun/demo_backend
+                docker push ganghyoun/demo_backend
 
-            # 프론트 이미지 생성 -> 허브(레퍼지토리) 푸시
-            - name: 프론트 이미지 생성 -> 허브(레퍼지토리) 푸시
+          # 프런트 이미지 생성 -> 허브(레퍼지토리) 푸시
+            - name: 프런트 이미지 생성 -> 허브(레퍼지토리) 푸시
               run: |
                 docker build -t ganghyoun/demo_frontend ./frontend
-                docket push ganghyoun/demo_frontend
+                docker push ganghyoun/demo_frontend
 
-            # EC2 서버로 필요한 파일 업로드(yml, nginx/*.conf)
+          # eC2 서버로 필요 파일 업로드(YML, nginx/*.conf)
 
-    #deploy:
-        # 도커 컴포즈 진행 (배포)
+      #deploy:
+      # 도커 컴포즈 진행
